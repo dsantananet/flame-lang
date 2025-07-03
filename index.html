@@ -1,69 +1,126 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Flame Language</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: "Segoe UI", sans-serif;
-            background: linear-gradient(to right, #1f1c2c, #928dab);
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 40px 20px;
-        }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 0.3em;
-        }
-        p {
-            font-size: 1.2em;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        a.button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 12px 24px;
-            background: #ff5722;
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        section {
-            margin: 50px 20px;
-        }
-        footer {
-            background-color: rgba(0, 0, 0, 0.4);
-            padding: 10px;
-            font-size: 0.9em;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flame Language</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #0e0e0e;
+      color: #f5f5f5;
+    }
+    header {
+      background: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #ff4c29;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    nav {
+      background: #2c2c2c;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ff4c29;
+    }
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section {
+      margin-bottom: 50px;
+    }
+    .section h2 {
+      border-left: 5px solid #ff4c29;
+      padding-left: 15px;
+      color: #ff4c29;
+    }
+    footer {
+      background: #1f1f1f;
+      text-align: center;
+      padding: 20px;
+      color: #aaa;
+      border-top: 1px solid #333;
+    }
+    .button {
+      display: inline-block;
+      background: #ff4c29;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .button:hover {
+      background: #ff5722;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>🔥 Flame Language</h1>
-        <p>A domain-specific language for fire behavior modeling and operational decision support. Created by Daniel Ricardo Maranhão Santana.</p>
-        <a href="https://github.com/dsantananet/flame-lang" class="button">View on GitHub</a>
-    </header>
-    <section>
-        <h2>🌍 About</h2>
-        <p>Flame is designed to simplify the modeling of wildfire behavior through concise, human-readable syntax. It enables structured analysis and forecasting for civil protection agencies, research, and AI integration.</p>
+  <header>
+    <h1>🔥 Flame Language</h1>
+    <p>Created by Daniel Ricardo Maranhão Santana - Anternative 3 | Awareness</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#manual">Manual</a>
+    <a href="#examples">Examples</a>
+    <a href="#whitepaper">Whitepaper</a>
+    <a href="https://github.com/dsantananet/flame-lang" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+  </nav>
+
+  <main>
+    <section class="section" id="about">
+      <h2>About Flame</h2>
+      <p>Flame is a modern programming language with Python-inspired syntax, built for clarity, expressiveness, and automation in mission-critical geospatial, environmental, and predictive analytics workflows.</p>
     </section>
-    <section>
-        <h2>📄 Whitepaper</h2>
-        <p>Read the official whitepaper detailing the architecture, use cases, and implementation strategy.</p>
-        <a href="Flame_Whitepaper_Anternative3.pdf" class="button">Download Whitepaper</a>
+
+    <section class="section" id="manual">
+      <h2>Manual</h2>
+      <p>The official manual of Flame will guide you through syntax, core concepts, functions, and usage patterns.</p>
+      <a class="button" href="manual.pdf" target="_blank">Download Manual</a>
     </section>
-    <footer>
-        &copy; 2025 Anternative 3 | Developed with 🔥 by Daniel R. M. Santana | Awareness
-    </footer>
+
+    <section class="section" id="examples">
+      <h2>Examples</h2>
+      <pre><code>
+# Define a variable
+let x = 10
+
+# Print result
+print("Value is", x)
+
+# Loop from 1 to 5
+for i in 1..5:
+  print(i)
+      </code></pre>
+    </section>
+
+    <section class="section" id="whitepaper">
+      <h2>Whitepaper</h2>
+      <p>Explore the Flame language foundations, vision, and technical specification.</p>
+      <a class="button" href="flame_whitepaper.pdf" target="_blank">Read Whitepaper</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Anternative 3 | Awareness. All rights reserved.</p>
+  </footer>
 </body>
 </html>
