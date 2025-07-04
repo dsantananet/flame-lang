@@ -42,6 +42,16 @@ Flame é uma linguagem de programação moderna, simples e expressiva, criada po
 📥 [Download todos os exemplos](https://github.com/dsantananet/flame-lang/archive/refs/heads/main.zip)
 
 ---
+## 🔥 Exemplos Flame
+
+- `fwi.flame` – Avaliação do índice de perigo FWI por concelho
+- `ndmi.flame` – Análise da humidade da vegetação morta (NDMI)
+- `ndwi.flame` – Análise da humidade da vegetação viva (NDWI)
+
+Cada script pode ser testado com os ficheiros:
+- `fwi.csv`
+- `ndmi.csv`
+- `ndwi.csv`
 
 ## 🖼️ Logótipos Oficiais
 
