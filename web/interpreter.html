@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flame Interpreter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: 'Fira Code', monospace;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1f1f1f;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #ff5722;
+    }
+    header img {
+      height: 32px;
+      margin-right: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+    .container {
+      padding: 2rem;
+    }
+    textarea {
+      width: 100%;
+      height: 250px;
+      background-color: #1e1e1e;
+      color: #ffcc00;
+      border: 1px solid #555;
+      font-size: 16px;
+      padding: 1rem;
+      border-radius: 8px;
+      resize: vertical;
+    }
+    .button {
+      background-color: #ff5722;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      margin-top: 1rem;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .output {
+      background-color: #272727;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      border: 1px solid #444;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #1f1f1f;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #444;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="img/AW1.png" alt="Logo 1">
+      <img src="img/AW2.png" alt="Logo 2">
+      <img src="img/ANT2.png" alt="Logo 3">
+      <img src="img/ANT3.png" alt="Logo 4">
+    </div>
+    <h1>🔥 Flame Web Interpreter</h1>
+  </header>
+
+  <div class="container">
+    <h2>Try Flame</h2>
+    <textarea id="code" placeholder="# Type your Flame code here...&#10;let x = 5&#10;print(x * 2)"></textarea>
+    <br>
+    <button class="button" onclick="runFlame()">Run</button>
+    <div id="output" class="output"></div>
+  </div>
+
+  <footer>
+    Created by Daniel Ricardo Maranhão Santana – © 2025 Flame Language
+  </footer>
+
+  <script>
+    function runFlame() {
+      const code = document.getElementById("code").value;
+      const lines = code.split("\n");
+      const output = [];
+      const env = {};
+
+      function evaluate(expr) {
+        try {
+          return eval(expr.replace(/([a-zA-Z_]\w*)/g, (m) => env[m] !== undefined ? env[m] : m));
+        } catch {
+          return "Error";
+        }
+      }
+
+      for (let line of lines) {
+        line = line.trim();
+        if (line.startsWith("let ")) {
+          const [, name, value] = line.match(/let (\w+)\s*=\s*(.+)/);
+          env[name] = evaluate(value);
+        } else if (line.startsWith("print(")) {
+          const inside = line.match(/print\((.*)\)/)[1];
+          output.push(evaluate(inside));
+        } else if (line) {
+          output.push("Unrecognized: " + line);
+        }
+      }
+
+      document.getElementById("output").textContent = output.join("\n");
+    }
+  </script>
+</body>
+</html>
