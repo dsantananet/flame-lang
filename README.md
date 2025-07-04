@@ -15,9 +15,13 @@
 
 ---
 
-## 🔥 Example Scripts
+# 🔥 Flame Language
 
-Explore real Flame programs in the [`examples/`](examples) folder:
+Flame is a lightweight, expressive programming language designed for rapid scripting and automation — especially in environmental and geospatial applications. Created by **Daniel Ricardo Maranhão Santana**, it enables simple syntax with powerful control structures and integration with Python backends, dashboards and AI.
+
+---
+
+## 🚀 Quick Example
 
 ```flame
 # Define a variable
@@ -34,7 +38,7 @@ for i in 1..5:
     print(square(i))
 
 ---
-
+```
 ---
 ## 🔥 Example Scripts
 
