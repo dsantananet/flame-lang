@@ -2,94 +2,122 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Flame Language</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🔥 Flame Language</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"/>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #1e1e1e; color: #f5f5f5; }
-    header, footer { background: #111; padding: 20px; text-align: center; }
-    .section { padding: 40px; max-width: 900px; margin: auto; }
-    h1, h2 { color: #ff5c33; }
-    pre, code { background: #2e2e2e; padding: 10px; border-radius: 5px; overflow-x: auto; display: block; }
-    a.button { background: #ff5c33; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 10px; }
-    .downloads a { display: block; margin: 5px 0; color: #66ccff; }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #ff4500;
+    }
+    header img {
+      height: 40px;
+      margin: 0 10px;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ff4500;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h1, h2 {
+      color: #ff4500;
+    }
+    .button {
+      background-color: #ff4500;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    footer {
+      background-color: #1f1f1f;
+      padding: 10px;
+      text-align: center;
+      border-top: 2px solid #ff4500;
+    }
+    footer img {
+      height: 30px;
+      margin: 0 8px;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>🔥 Flame Language</h1>
-    <p>Created by Daniel Ricardo Maranhão Santana</p>
-  </header>
 
-  <section class="section">
-    <h2>Overview</h2>
-    <p>Flame is a lightweight scripting language designed for data analysis, automation, and fire risk modeling. Its syntax is clean and intuitive — ideal for rapid prototyping and operational scripting.</p>
+<header>
+  <div>
+    <img src="img/ANT2.png" alt="Anternative 3"/>
+    <img src="img/AW2.png" alt="Awareness"/>
+  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#manual">Manual</a>
+    <a href="#examples">Examples</a>
+    <a href="#whitepaper">Whitepaper</a>
+    <a href="https://github.com/dsantananet/flame-lang" target="_blank">GitHub</a>
+  </nav>
+</header>
+
+<main>
+  <section id="about">
+    <h2>About Flame</h2>
+    <p>Flame is a modern domain-specific programming language with a clean syntax inspired by Python, designed for geospatial intelligence, predictive modeling, and environmental risk analysis.</p>
   </section>
 
-  <section class="section">
-    <h2>🔥 Interpreter</h2>
-    <p>The official Flame interpreter is built in Python. You can run it directly:</p>
-    <pre><code>python flame_interpreter.py</code></pre>
-    <p>Or use it inside your code:</p>
-    <pre><code>from flame_interpreter import run_flame_code
-run_flame_code(open("examples/hello.flame").read())</code></pre>
-    <a class="button" href="flame_interpreter.py" target="_blank">Download Interpreter</a>
-  </section>
-
-  <section class="section">
-    <h2>📂 CSV Example</h2>
-    <p>Flame can process fire risk data line-by-line from a CSV:</p>
-    <pre><code># csv-fire-risk.flame
-let linhas = [
-  "Concelho,Temp,Humidade,FWI",
-  "Proença-a-Nova,38,18,72",
-  "Castelo Branco,34,22,60",
-  "Sertã,40,15,80"
-]
-
-let header = linhas[0].split(",")
-
-for i in 1..len(linhas)-1:
-  let partes = linhas[i].split(",")
-  let concelho = partes[0]
-  let temp = to_number(partes[1])
-  let humidade = to_number(partes[2])
-  let fwi = to_number(partes[3])
-
-  if temp > 37 and humidade < 20 and fwi > 70:
-    print("🚨", concelho, "→ EXTREME RISK")
-  elif fwi > 60:
-    print("⚠️", concelho, "→ HIGH RISK")
-  else:
-    print("✅", concelho, "→ LOW RISK")
-</code></pre>
-    <div class="downloads">
-      <a href="examples/csv-fire-risk.flame" target="_blank">Download .flame file</a>
-      <a href="examples/dados_meteo.csv" target="_blank">Download CSV</a>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>📘 Documentation</h2>
+  <section id="manual">
+    <h2>Manual</h2>
+    <p>The official manual includes syntax, data structures, and examples for geospatial analysis and automation.</p>
     <a class="button" href="manual.pdf" target="_blank">Download Manual</a>
   </section>
 
-  <section class="section">
-    <h2>📄 Whitepaper</h2>
-    <a class="button" href="flame_whitepaper.pdf" target="_blank">Download Whitepaper</a>
+  <section id="examples">
+    <h2>Examples</h2>
+    <ul>
+      <li><a href="examples/hello.flame">hello.flame</a></li>
+      <li><a href="examples/squares.flame">squares.flame</a></li>
+      <li><a href="csv-fire-risk.flame">csv-fire-risk.flame</a></li>
+    </ul>
+    <p><a href="dados_meteo.csv" download class="button">Download Example CSV</a></p>
   </section>
-  <section class="section">
-  <h2>Supported by</h2>
-  <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
-    <img src="img/ANT2.png" height="40">
-    <img src="img/ANT3.png" height="40">
-    <img src="img/AW1.png" height="40">
-    <img src="img/AW2.png" height="40">
+
+  <section id="whitepaper">
+    <h2>Whitepaper</h2>
+    <p>Explore the foundational principles, architecture, and innovation behind the Flame language.</p>
+    <a class="button" href="flame_whitepaper.pdf" target="_blank">Read Whitepaper</a>
+  </section>
+</main>
+
+<footer>
+  <p>Created by Daniel Ricardo Maranhão Santana · Anternative 3 · Awareness</p>
+  <div>
+    <img src="img/ANT3.png" alt="Anternative 3">
+    <img src="img/AW1.png" alt="Awareness">
+    <img src="img/309a9b4b-661e-4532-b0ad-c9ab3fc6e844.png" alt="Logo 3">
   </div>
-</section>
+</footer>
 
-
-  <footer>
-    <p>Institution: Anternative 3 &nbsp;|&nbsp; Supported by: Wareness</p>
-  </footer>
 </body>
 </html>
