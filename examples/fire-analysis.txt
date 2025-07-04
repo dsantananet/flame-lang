@@ -1,0 +1,1 @@
+Este script simula uma análise de perigo de incêndio com base em temperatura, vento, humidade e o índice FWI. Ideal para testes de lógica em Flame.

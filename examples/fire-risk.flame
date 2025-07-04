@@ -1,0 +1,7 @@
+let temperature = 35
+let wind = 20
+
+if temperature > 30 and wind > 15:
+    print("🔥 High fire risk")
+else:
+    print("✅ Low fire risk")

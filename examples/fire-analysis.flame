@@ -1,0 +1,18 @@
+# 🔥 Fire Analysis with Meteorological Reference
+
+# Input data
+let temp = 38
+let wind = 25
+let humidity = 18
+let fwi = 65  # Fire Weather Index
+
+# Analysis
+if temp > 35 and wind > 20 and humidity < 20 and fwi > 60:
+    print("🚨 Extreme fire danger! Immediate action required.")
+elif fwi > 40:
+    print("⚠️ High fire risk. Monitor closely.")
+else:
+    print("✅ Normal conditions.")
+
+# Advisory
+print("Temp:", temp, "°C | Wind:", wind, "km/h | Humidity:", humidity, "% | FWI:", fwi)
