@@ -1,87 +1,57 @@
+
 # 🔥 Flame Language
 
-Flame is a lightweight scripting language created by **Daniel Ricardo Maranhão Santana**, designed for intuitive control of automation, fire risk evaluation, and data analysis — with clean syntax and rapid execution.
-
-Developed under **Anternative 3** and supported by **Wareness**.
-
-Flame é uma linguagem de programação moderna, simples e expressiva, criada por **Daniel Ricardo Maranhão Santana**. Foi concebida para modelação ambiental, inteligência geoespacial, análise preditiva e automatização de tarefas técnicas.
+Flame é uma linguagem leve, legível e poderosa, criada para análise de dados, lógica de decisão e simulação de risco.
 
 ---
 
-## 🌐 Website Oficial
+## 🧪 Começar Agora
 
-➡️ [https://dsantananet.github.io/flame-lang](https://dsantananet.github.io/flame-lang)
-
----
-
-## 📘 Manual
-
-📥 [Download Manual (PDF)](manual.pdf)
+- [Try Flame (interprete online)](web/interpreter.html)
+- [FWI por Concelho](web/fwi.html)
 
 ---
 
-## 📄 Whitepaper
+## 📘 Documentação
 
-📥 [Download Whitepaper (PDF)](flame_whitepaper.pdf)
-
----
-
-## 💻 Experimenta no Navegador
-
-🚀 [Abrir o Interpretador Online (interpreter.html)](interpreter.html)
+- [📄 Manual (PDF)](manual.pdf)
+- [📄 Whitepaper Técnico (PDF)](whitepaper.pdf)
 
 ---
 
-## 📁 Exemplos incluídos
+## 📂 Exemplos
 
-- [`examples/hello.flame`](examples/hello.flame) – Definição de variável e impressão simples  
-- [`examples/squares.flame`](examples/squares.flame) – Ciclo e função  
-- [`csv-fire-risk.flame`](csv-fire-risk.flame) – Leitura de ficheiro `.csv` e análise de risco  
-- [`dados_meteo.csv`](dados_meteo.csv) – Exemplo de dados meteorológicos
+### Meteorologia e Perigo de Incêndio
 
-📥 [Download todos os exemplos](https://github.com/dsantananet/flame-lang/archive/refs/heads/main.zip)
+| Script             | Descrição                                                   | CSV                   |
+|--------------------|-------------------------------------------------------------|------------------------|
+| `fwi.flame`        | Classificação do perigo com FWI                             | [`fwi.csv`](data/fwi.csv)   |
+| `ndmi.flame`       | Humidade dos combustíveis mortos                            | [`ndmi.csv`](data/ndmi.csv) |
+| `ndwi.flame`       | Humidade dos combustíveis vivos                             | [`ndwi.csv`](data/ndwi.csv) |
 
----
-## 🔥 Exemplos Flame
+### Fundamentos da Linguagem
 
-- `fwi.flame` – Avaliação do índice de perigo FWI por concelho
-- `ndmi.flame` – Análise da humidade da vegetação morta (NDMI)
-- `ndwi.flame` – Análise da humidade da vegetação viva (NDWI)
-
-Cada script pode ser testado com os ficheiros:
-- `fwi.csv`
-- `ndmi.csv`
-- `ndwi.csv`
-
-## 🖼️ Logótipos Oficiais
-
-<p align="center">
-  <img src="img/ANT2.png" height="50"/>
-  <img src="img/AW2.png" height="50"/>
-  <img src="img/ANT3.png" height="50"/>
-  <img src="img/AW1.png" height="50"/>
-</p>
+- `hello.flame` – Declaração de variáveis e impressão
+- `squares.flame` – Funções e loops
+- `fire-risk.flame` – Avaliação de risco com condições
 
 ---
 
-## 🛠️ Contribuições
+## 🌍 Projeto
 
-Todos são bem-vindos a contribuir com melhorias, módulos ou exemplos.  
-Faz um fork, cria um branch e abre um pull request.
+Flame foi criado por **Daniel Ricardo Maranhão Santana** com apoio da **Anternative 3** e **Awareness**.
 
----
-
-## 📜 Licença
-
-MIT — Livre para usar, modificar e distribuir.
+> Licença: MIT
 
 ---
 
-## 📣 Instituições
+## 📷 Imagens
 
-Desenvolvido no âmbito dos projetos da:
+![](img/AW1.png)
+![](img/AW2.png)
+![](img/ANT2.png)
+![](img/ANT3.png)
 
-- **Anternative 3**  
-- **Awareness**
-- **Daniel Santana**
+---
 
+[Visita o Site Oficial](https://dsantananet.github.io/flame-lang)
