@@ -1,0 +1,23 @@
+
+# 📂 Exemplo: Análise FWI com dados locais
+
+# Carrega CSV de dados meteorológicos
+load_csv("fwi.csv")
+
+# Define concelho a analisar
+let concelho = "Castelo Branco"
+
+# Obtém valor do FWI
+let fwi = get("FWI", concelho)
+
+# Classifica perigo
+if fwi < 6:
+    print(concelho, "→ Muito reduzido 🔵")
+elif fwi < 12:
+    print(concelho, "→ Reduzido 🟢")
+elif fwi < 25:
+    print(concelho, "→ Moderado 🟡")
+elif fwi < 50:
+    print(concelho, "→ Elevado 🟠")
+else:
+    print(concelho, "→ Muito elevado 🔴")

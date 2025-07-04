@@ -1,0 +1,14 @@
+
+# 📂 Exemplo: Análise NDMI
+
+load_csv("ndmi.csv")
+
+let concelho = "Castelo Branco"
+let ndmi = get("NDMI", concelho)
+
+if ndmi < 0.2:
+    print(concelho, "→ NDMI muito baixo 🌵")
+elif ndmi < 0.35:
+    print(concelho, "→ NDMI moderado 🌿")
+else:
+    print(concelho, "→ NDMI elevado 🌳")

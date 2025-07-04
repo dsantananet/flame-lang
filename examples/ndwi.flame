@@ -1,0 +1,14 @@
+
+# 📂 Exemplo: Análise NDWI
+
+load_csv("ndwi.csv")
+
+let concelho = "Castelo Branco"
+let ndwi = get("NDWI", concelho)
+
+if ndwi < 0.2:
+    print(concelho, "→ NDWI muito seco 🔥")
+elif ndwi < 0.3:
+    print(concelho, "→ NDWI moderado 💧")
+else:
+    print(concelho, "→ NDWI elevado 🌊")
