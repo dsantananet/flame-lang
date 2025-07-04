@@ -15,7 +15,9 @@
 
 ---
 
-## 📝 Example Code
+## 🔥 Example Scripts
+
+Explore real Flame programs in the [`examples/`](examples) folder:
 
 ```flame
 # Define a variable
@@ -30,6 +32,7 @@ def square(n):
 
 for i in 1..5:
     print(square(i))
+
 ---
 
 ---
@@ -40,7 +43,7 @@ Explore real Flame programs in the [`examples/`](examples) folder:
 - `hello.flame` – Simple variable and print
 - `squares.flame` – Loop and function example
 - `fire-risk.flame` – Fire risk evaluation with conditions
----
+
 
 ## 📘 Manual
 
