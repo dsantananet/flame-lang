@@ -98,6 +98,15 @@ We welcome contributions!
 Fork this repository, clone it, and send a pull request with your improvements.
 
 ---
+## 🧑‍🤝‍🧑 Partners
+
+<div align="center">
+  <img src="img/ANT2.png" height="40">
+  <img src="img/ANT3.png" height="40">
+  <img src="img/AW1.png" height="40">
+  <img src="img/AW2.png" height="40">
+</div>
+---
 
 ## 📜 License
 
