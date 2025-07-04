@@ -4,115 +4,74 @@ Flame is a lightweight scripting language created by **Daniel Ricardo Maranhão 
 
 Developed under **Anternative 3** and supported by **Wareness**.
 
----
-
-## 🚀 Quick Example
-
-```flame
-# Define a variable
-let x = 10
-
-# Print value
-print("Value is", x)
-
-# Function and loop
-def square(n):
-    return n * n
-
-for i in 1..5:
-    print(square(i))
-```
+Flame é uma linguagem de programação moderna, simples e expressiva, criada por **Daniel Ricardo Maranhão Santana**. Foi concebida para modelação ambiental, inteligência geoespacial, análise preditiva e automatização de tarefas técnicas.
 
 ---
 
-## 🔥 Example Scripts
+## 🌐 Website Oficial
 
-Explore real Flame programs in the [`examples/`](examples) folder:
-
-- `hello.flame` – Simple variable and print  
-- `squares.flame` – Loop and function example  
-- `fire-risk.flame` – Fire risk evaluation with conditions  
-- `fire-analysis.flame` – Advanced fire analysis with meteorology and FWI  
-- `csv-fire-risk.flame` – Simulated CSV line-by-line fire risk evaluation  
-
----
-
-## 📁 Sample CSV File
-
-You can use this file as test input:
-
-- [`dados_meteo.csv`](examples/dados_meteo.csv)
-
-```csv
-Concelho,Temp,Humidade,FWI
-Proença-a-Nova,38,18,72
-Castelo Branco,34,22,60
-Sertã,40,15,80
-```
-
----
-
-## 🧠 Interpreter
-
-A basic Python-based interpreter is included in [`flame_interpreter.py`](flame_interpreter.py).
-
-### ▶️ Run via terminal:
-
-```bash
-python flame_interpreter.py
-```
-
-### 🧩 Or import and execute:
-
-```python
-from flame_interpreter import run_flame_code
-run_flame_code(open("examples/hello.flame").read())
-```
+➡️ [https://dsantananet.github.io/flame-lang](https://dsantananet.github.io/flame-lang)
 
 ---
 
 ## 📘 Manual
 
-The official Flame Manual is available as PDF:  
-📥 [Download Manual](manual.pdf)
+📥 [Download Manual (PDF)](manual.pdf)
 
 ---
 
 ## 📄 Whitepaper
 
-Explore the principles, design goals, and technical structure of Flame:  
-📥 [Download Whitepaper](flame_whitepaper.pdf)
+📥 [Download Whitepaper (PDF)](flame_whitepaper.pdf)
 
 ---
 
-## 🌐 Website
+## 💻 Experimenta no Navegador
 
-Visit the official website:  
-🌐 [https://dsantananet.github.io/flame-lang](https://dsantananet.github.io/flame-lang)
-
----
-
-## 🛠️ Contribution
-
-We welcome contributions!  
-Fork this repository, clone it, and send a pull request with your improvements.
-
----
-## 🧑‍🤝‍🧑 Partners
-
-<div align="center">
-  <img src="img/ANT2.png" height="40">
-  <img src="img/ANT3.png" height="40">
-  <img src="img/AW1.png" height="40">
-  <img src="img/AW2.png" height="40">
-</div>
----
-
-## 📜 License
-
-MIT License — Free to use, modify and distribute.
+🚀 [Abrir o Interpretador Online (interpreter.html)](interpreter.html)
 
 ---
 
-**Institution:** Anternative 3  
-**Supported by:** Wareness
+## 📁 Exemplos incluídos
+
+- [`examples/hello.flame`](examples/hello.flame) – Definição de variável e impressão simples  
+- [`examples/squares.flame`](examples/squares.flame) – Ciclo e função  
+- [`csv-fire-risk.flame`](csv-fire-risk.flame) – Leitura de ficheiro `.csv` e análise de risco  
+- [`dados_meteo.csv`](dados_meteo.csv) – Exemplo de dados meteorológicos
+
+📥 [Download todos os exemplos](https://github.com/dsantananet/flame-lang/archive/refs/heads/main.zip)
+
+---
+
+## 🖼️ Logótipos Oficiais
+
+<p align="center">
+  <img src="img/ANT2.png" height="50"/>
+  <img src="img/AW2.png" height="50"/>
+  <img src="img/ANT3.png" height="50"/>
+  <img src="img/AW1.png" height="50"/>
+</p>
+
+---
+
+## 🛠️ Contribuições
+
+Todos são bem-vindos a contribuir com melhorias, módulos ou exemplos.  
+Faz um fork, cria um branch e abre um pull request.
+
+---
+
+## 📜 Licença
+
+MIT — Livre para usar, modificar e distribuir.
+
+---
+
+## 📣 Instituições
+
+Desenvolvido no âmbito dos projetos da:
+
+- **Anternative 3**  
+- **Awareness**
+- **Daniel Santana**
+
