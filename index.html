@@ -1,125 +1,45 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🔥 Flame Language</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"/>
+  <title>Flame Language</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #111;
-      color: #fff;
-    }
-    header {
-      background-color: #1f1f1f;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px solid #ff4500;
-    }
-    header img {
-      height: 40px;
-      margin: 0 10px;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #ff4500;
-    }
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-    }
-    section {
-      margin-bottom: 40px;
-    }
-    h1, h2 {
-      color: #ff4500;
-    }
+    body { font-family: Arial; padding: 2rem; background: #f4f4f4; color: #222; }
+    h1 { color: #d84315; }
     .button {
-      background-color: #ff4500;
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      margin: 0.5rem 0;
+      background: #d84315;
       color: white;
-      padding: 10px 20px;
-      border: none;
       text-decoration: none;
-      font-weight: bold;
       border-radius: 5px;
     }
-    footer {
-      background-color: #1f1f1f;
-      padding: 10px;
-      text-align: center;
-      border-top: 2px solid #ff4500;
+    .button:hover {
+      background: #bf360c;
     }
-    footer img {
-      height: 30px;
-      margin: 0 8px;
+    ul li {
+      margin-bottom: 0.5rem;
     }
   </style>
 </head>
 <body>
+  <h1>🔥 Flame Language</h1>
+  <p>Flame is a lightweight, human-readable scripting language for data analysis, decision logic, and simulations.</p>
 
-<header>
-  <div>
-    <img src="img/ANT2.png" alt="Anternative 3"/>
-    <img src="img/AW2.png" alt="Awareness"/>
-  </div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#manual">Manual</a>
-    <a href="#examples">Examples</a>
-    <a href="#whitepaper">Whitepaper</a>
-    <a href="web/interpreter.html" target="_blank">Try Flame</a>
-    <a href="https://github.com/dsantananet/flame-lang" target="_blank">GitHub</a>
-    <a href="web/fwi.html" class="button">🔎 Ver FWI por Concelho</a>
-  </nav>
-</header>
+  <a href="web/interpreter.html" class="button">🧪 Try Flame</a>
+  <a href="web/fwi.html" class="button">🔎 Ver FWI por Concelho</a>
+  <a href="manual.pdf" class="button">📘 Manual</a>
+  <a href="whitepaper.pdf" class="button">📄 Whitepaper</a>
+  <a href="examples/" class="button">📂 Examples</a>
+  <a href="https://github.com/dsantananet/flame-lang" class="button">🌐 GitHub</a>
 
-<main>
-  <section id="about">
-    <h2>About Flame</h2>
-    <p>Flame is a modern domain-specific programming language with a clean syntax inspired by Python, designed for geospatial intelligence, predictive modeling, and environmental risk analysis.</p>
-  </section>
-
-  <section id="manual">
-    <h2>Manual</h2>
-    <p>The official manual includes syntax, data structures, and examples for geospatial analysis and automation.</p>
-    <a class="button" href="manual.pdf" target="_blank">Download Manual</a>
-  </section>
-
-  <section id="examples">
-    <h2>Examples</h2>
-    <ul>
-      <li><a href="examples/hello.flame">hello.flame</a></li>
-      <li><a href="examples/squares.flame">squares.flame</a></li>
-      <li><a href="csv-fire-risk.flame">csv-fire-risk.flame</a></li>
-    </ul>
-    <p><a href="dados_meteo.csv" download class="button">Download Example CSV</a></p>
-  </section>
-
-  <section id="whitepaper">
-    <h2>Whitepaper</h2>
-    <p>Explore the foundational principles, architecture, and innovation behind the Flame language.</p>
-    <a class="button" href="flame_whitepaper.pdf" target="_blank">Read Whitepaper</a>
-  </section>
-</main>
-
-<footer>
-  <p>Created by Daniel Ricardo Maranhão Santana · Anternative 3 · Awareness</p>
-  <div>
-    <img src="img/ANT3.png" alt="Anternative 3">
-    <img src="img/AW1.png" alt="Awareness">
-    <img src="img/309a9b4b-661e-4532-b0ad-c9ab3fc6e844.png" alt="Logo 3">
-  </div>
-</footer>
-
+  <h2>🔥 Exemplos Meteorológicos</h2>
+  <ul>
+    <li><a href="examples/fwi.flame">fwi.flame</a> com <a href="data/fwi.csv">fwi.csv</a></li>
+    <li><a href="examples/ndmi.flame">ndmi.flame</a> com <a href="data/ndmi.csv">ndmi.csv</a></li>
+    <li><a href="examples/ndwi.flame">ndwi.flame</a> com <a href="data/ndwi.csv">ndwi.csv</a></li>
+  </ul>
 </body>
 </html>
