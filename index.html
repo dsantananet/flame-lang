@@ -1,38 +1,65 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <title>Flame Language</title>
+  <title>🔥 Flame Language</title>
   <style>
-    body { font-family: Arial; padding: 2rem; background: #f4f4f4; color: #222; }
-    h1 { color: #d84315; }
+    body {
+      background-color: #121212;
+      color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+    h1 {
+      color: #ff7043;
+    }
     .button {
       display: inline-block;
       padding: 0.75rem 1.5rem;
-      margin: 0.5rem 0;
-      background: #d84315;
-      color: white;
+      margin: 0.5rem;
+      background: #ff7043;
+      color: #fff;
       text-decoration: none;
       border-radius: 5px;
     }
     .button:hover {
-      background: #bf360c;
+      background: #e64a19;
     }
-    ul li {
-      margin-bottom: 0.5rem;
+    .img-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .img-row img {
+      max-height: 100px;
+    }
+    footer {
+      margin-top: 4rem;
+      border-top: 1px solid #333;
+      padding-top: 1rem;
+      text-align: center;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
+  <div class="img-row">
+    <img src="img/AW1.png" alt="Awareness 1" />
+    <img src="img/AW2.png" alt="Awareness 2" />
+    <img src="img/ANT2.png" alt="Anternative 2" />
+    <img src="img/ANT3.png" alt="Anternative 3" />
+  </div>
+
   <h1>🔥 Flame Language</h1>
-  <p>Flame is a lightweight, human-readable scripting language for data analysis, decision logic, and simulations.</p>
+  <p>Flame é uma linguagem leve, expressiva e fácil de usar, ideal para análises de dados, lógica de decisão e simulações.</p>
 
   <a href="web/interpreter.html" class="button">🧪 Try Flame</a>
   <a href="web/fwi.html" class="button">🔎 Ver FWI por Concelho</a>
   <a href="manual.pdf" class="button">📘 Manual</a>
   <a href="whitepaper.pdf" class="button">📄 Whitepaper</a>
-  <a href="examples/" class="button">📂 Examples</a>
+  <a href="examples/" class="button">📂 Exemplos</a>
   <a href="https://github.com/dsantananet/flame-lang" class="button">🌐 GitHub</a>
 
   <h2>🔥 Exemplos Meteorológicos</h2>
@@ -41,5 +68,9 @@
     <li><a href="examples/ndmi.flame">ndmi.flame</a> com <a href="data/ndmi.csv">ndmi.csv</a></li>
     <li><a href="examples/ndwi.flame">ndwi.flame</a> com <a href="data/ndwi.csv">ndwi.csv</a></li>
   </ul>
+
+  <footer>
+    Desenvolvido por Daniel Ricardo Maranhão Santana · Anternative 3 · Awareness
+  </footer>
 </body>
 </html>
