@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flame – FWI por Concelho</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      color: #d84315;
+    }
+    input, button {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      width: 100%;
+      font-size: 1rem;
+    }
+    #output {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+  <h1>🔎 Análise FWI por Concelho</h1>
+  <p>Carrega um ficheiro <code>fwi.csv</code> com os dados por concelho:</p>
+  <input type="file" id="csvInput" />
+  <input type="text" id="concelhoInput" placeholder="Ex: Castelo Branco" />
+  <button onclick="lerCSV()">Ver Perigo</button>
+  <div id="output">⏳ Aguardando dados...</div>
+
+  <script>
+    function classificaFWI(fwi) {
+      if (fwi < 6) return "🔥 Muito reduzido";
+      if (fwi < 12) return "🟢 Reduzido";
+      if (fwi < 25) return "🟡 Moderado";
+      if (fwi < 50) return "🟠 Elevado";
+      return "🔴 Muito elevado";
+    }
+
+    function lerCSV() {
+      const file = document.getElementById('csvInput').files[0];
+      const concelho = document.getElementById('concelhoInput').value.trim();
+      const output = document.getElementById('output');
+
+      if (!file || !concelho) {
+        output.textContent = "⚠️ Seleciona um ficheiro e escreve o concelho.";
+        return;
+      }
+
+      Papa.parse(file, {
+        header: true,
+        complete: function(results) {
+          const reg = results.data.find(x => x.Concelho.toLowerCase() === concelho.toLowerCase());
+          if (!reg) {
+            output.textContent = "❌ Concelho não encontrado no CSV.";
+            return;
+          }
+
+          const fwi = parseFloat(reg.FWI);
+          const perigo = classificaFWI(fwi);
+          output.textContent = `📍 ${reg.Concelho}
+FWI: ${fwi}
+Perigo: ${perigo}`;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
