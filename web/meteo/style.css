@@ -3,3 +3,5 @@
 .layout>*{min-width:0}.toolbar label{max-width:100%;min-width:0}select{max-width:100%;width:100%}header>div{min-width:0}#prediction{overflow-x:auto}@media(max-width:900px){.layout,.bottom{grid-template-columns:minmax(0,1fr)}}
 
 .decision-settings{margin-top:24px;padding:20px;background:#162336;border-radius:12px}.thresholds{display:flex;flex-wrap:wrap;gap:12px}.thresholds label{width:140px}.thresholds input{padding:9px;border:1px solid #4b617b;border-radius:6px;background:#101d2d;color:#fff}.indicator{border-left:3px solid #ffc46c;padding-left:12px}.decision-settings .bottom{padding:0}
+
+.brand{font-size:2.3rem;font-weight:800;color:#f5f8fc;text-decoration:none;letter-spacing:-1px}.brand span{color:#ff7b20}.app-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px}.app-actions span{font-size:.85rem;color:#a8b8cc}dialog{max-width:600px;border:1px solid #4b617b;border-radius:14px;background:#162336;color:#fff;padding:24px}dialog::backdrop{background:#0009}dialog li{margin:10px 0}

@@ -1,0 +1,12 @@
+const install=document.getElementById('install'),update=document.getElementById('update'),status=document.getElementById('app-status');
+let prompt=null,registration=null,applying=false;
+const standalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+if(standalone()){install.hidden=true;status.textContent='IgnisPyro instalada · versão 1.1.0';}
+window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();prompt=event;install.textContent='Instalar IgnisPyro';});
+window.addEventListener('appinstalled',()=>{install.hidden=true;prompt=null;status.textContent='IgnisPyro instalada. Abra-a pelo menu Iniciar ou pelo ícone criado pelo navegador.';});
+install.onclick=async()=>{if(prompt){await prompt.prompt();const choice=await prompt.userChoice;status.textContent=choice.outcome==='accepted'?'Instalação aceite.':'Instalação cancelada.';prompt=null;}else{document.getElementById('install-help').showModal();}};
+document.getElementById('close-help').onclick=()=>document.getElementById('install-help').close();
+function pending(){update.textContent='Atualizar aplicação';status.textContent='Nova versão disponível. Atualizar recarrega a aplicação e mantém o histórico deste navegador.';}
+function watch(reg){if(reg.waiting)pending();reg.addEventListener('updatefound',()=>{const worker=reg.installing;worker?.addEventListener('statechange',()=>{if(worker.state==='installed'&&navigator.serviceWorker.controller)pending();});});}
+update.onclick=async()=>{if(!registration){status.textContent='Atualizações instaláveis requerem HTTPS ou o servidor local.';return;}if(registration.waiting){applying=true;registration.waiting.postMessage({type:'APPLY_UPDATE'});return;}try{await registration.update();if(registration.waiting)pending();else status.textContent='Verificação solicitada. Uma nova versão será indicada quando estiver pronta.';}catch{status.textContent='Sem ligação para verificar atualizações. O histórico local continua disponível.';}};
+if('serviceWorker' in navigator&&window.isSecureContext){navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(reg=>{registration=reg;watch(reg);}).catch(()=>{status.textContent='Não foi possível preparar a instalação offline.';});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(applying)location.reload();});document.addEventListener('visibilitychange',()=>{if(!document.hidden&&registration)registration.update().catch(()=>{});});}else{status.textContent='Abra num endereço HTTPS para instalar; a consulta no navegador continua disponível.';}

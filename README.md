@@ -1,3 +1,9 @@
+<h1>IgnisPyro Meteo</h1>
+
+Observações meteorológicas, previsão experimental e indicadores para agronomia e proteção civil, desenvolvidos com Flame.
+
+[Aplicação instalável no Windows pelo Edge/Chrome](web/meteo/) · [Instalação, atualizações e utilização](METEO.md)
+
 
 # 🔥 Flame — A Domain-Specific Language for Fire Modeling and Decision Support
 

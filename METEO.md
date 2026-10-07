@@ -10,7 +10,7 @@ Sem pacotes Python adicionais; Python 3.10+ para o servidor opcional. Num checko
 python3 meteo_server.py
 ```
 
-Abra o caminho `/web/meteo/` no servidor na porta 8000. Para publicar como site estático, sirva o repositório com GitHub Pages; o ponto de entrada é `web/meteo/index.html`, também ligado na página inicial. As observações IPMA funcionam diretamente no navegador por CORS. O mapa usa Leaflet via unpkg e contornos Natural Earth (domínio público) incluídos no repositório; não depende de servidores de mosaicos. O fundo é uma referência geográfica simplificada, não cartografia de detalhe. Requer Internet. Não há ferramentas SIG de desktop ou zyGrib instaladas por esta aplicação.
+Abra o caminho `/web/meteo/` no servidor na porta 8000. Para publicar como site estático, sirva o repositório com GitHub Pages; o ponto de entrada é `web/meteo/index.html`, também ligado na página inicial. As observações IPMA funcionam diretamente no navegador por CORS. O mapa usa Leaflet 1.9.4 incluído localmente e contornos Natural Earth (domínio público) incluídos no repositório; não depende de servidores de mosaicos. O fundo é uma referência geográfica simplificada, não cartografia de detalhe. Requer Internet. Não há ferramentas SIG de desktop ou zyGrib instaladas por esta aplicação.
 
 ## Observações
 
@@ -78,3 +78,13 @@ Se perder o ficheiro ou a palavra-passe, crie um novo ficheiro com uma chave vá
 O painel agroclimático apresenta mínima/máxima do período, frio/calor, secura do ar e vento. Chuva de 24 horas e graus-dia simplificados só são apresentados quando existem 24 amostras horárias válidas na janela; cobertura incompleta nunca é interpretada como zero. A base térmica pode ser ajustada. Para leituras sub-horárias usa a última amostra de cada hora; isto não equivale a uma temperatura média horária oficial. Não calcula evapotranspiração, balanço hídrico, necessidade de rega ou calendário de sementeira sem dados de cultura, solo e fase fenológica.
 
 O painel de proteção civil avalia combinações de calor/secura/vento, vento médio, chuva horária e calor, usando os últimos dados da estação selecionada. Limiares iniciais: 35 °C, 20% de humidade, 30 km/h para combinação de incêndio, 50 km/h para vento elevado, 10 mm/h para chuva. São critérios demonstrativos ajustáveis, não classes de perigo validadas nem FWI. Abaixo dos limiares não implica segurança. Temperatura, humidade ou vento ausentes tornam a combinação de incêndio indeterminada; estação atrasada mais de duas horas suspende a avaliação. Não há envio automático de alertas ou ativação de planos de emergência.
+
+## Instalar IgnisPyro no Windows e receber atualizações
+
+A distribuição principal é uma aplicação web instalável (PWA), sem necessidade de Python para consultar IPMA. Abra o endereço HTTPS publicado pelo GitHub Pages no Edge ou Chrome e clique **Instalar aplicação**. Se o navegador não disponibilizar o pedido automático, o botão apresenta os passos do menu do navegador. A aplicação aparece numa janela independente; o navegador gere atalhos e desinstalação.
+
+Depois da primeira abertura online, a interface, o mapa simplificado e o histórico já guardado podem abrir offline. As observações novas precisam de Internet. A chave Weather Underground não é incluída no site nem no cache: a integração pessoal continua a exigir o servidor local seguro. Histórico em localhost e no site HTTPS pertence a origens diferentes; exporte CSV antes de mudar de origem.
+
+O botão **Verificar atualizações** procura uma versão nova. Quando aparece **Atualizar aplicação**, aceitar recarrega a interface mantendo o histórico local. As alterações precisam de commit/push e de uma implantação GitHub Pages bem-sucedida; código enviado ao Git não implica atualização já disponível no site. O GitHub Pages existente publica a branch main; o workflow `.github/workflows/meteo.yml` verifica cálculos, servidor e instalação offline. Caso Pages seja desativado, escolha **Settings → Pages → Deploy from a branch → main → /(root)**. Nenhuma chave ou ficheiro cifrado deve ser incluído no Git.
+
+Para uma nova versão, incremente `VERSION` em `web/meteo/sw.js` e atualize o número apresentado em `pwa.mjs`/`index.html`. O service worker prepara o conjunto completo de recursos antes de oferecer a troca; não guarda respostas meteorológicas ou credenciais em cache. O Leaflet 1.9.4 e a licença estão incluídos localmente. O ícone IP e a marca em texto são provisórios enquanto os PNG/JPG originais IgnisPyro não estiverem disponíveis como ficheiros para integração fiel.
