@@ -1,4 +1,5 @@
 import {fields,normalize,merge,series,forecast,csv,geojson,clock,number} from './engine.mjs';
+import {assess} from './decisions.mjs';
 const $=id=>document.getElementById(id), API='https://api.ipma.pt/open-data/observation/meteorology/stations/';
 let rows=[],times=[],timer=null,markers=null,map=null,currentForecast=[];
 const fmt=v=>v===null||v===undefined?'—':Number(v).toFixed(1);
@@ -36,6 +37,7 @@ function render(){
   const result=forecast(points,field,clock(time));currentForecast=result.predictions||[];
   if(result.reason){$('prediction').textContent=result.reason;}
   else{$('prediction').innerHTML='<table><thead><tr><th>Horizonte</th><th>Previsão</th><th>MAE / persistência</th><th>Casos</th></tr></thead><tbody>'+currentForecast.map(p=>`<tr><td>+${p.h} h</td><td>${fmt(p.value)} ${fields[field][1]}${p.spread===null?'':` ± ${fmt(p.spread)}`}</td><td>${fmt(p.mae)} / ${fmt(p.baseline)}</td><td>${p.n}</td></tr>`).join('')+'</tbody></table><p>MAE: erro absoluto médio numa avaliação cronológica. Um erro menor que o da persistência indica melhoria apenas nesta amostra.</p>';}
+  decisions(history,time,forecast(series(history,id,'temperature'),'temperature',clock(time)).predictions||[]);
   chart(points.filter(p=>p.t>=clock(time)-24*3600000),currentForecast,fields[field][1]);
 }
 function chart(points,predictions,unit){
@@ -55,3 +57,13 @@ $('forecast-csv').onclick=()=>{if(!currentForecast.length){$('status').textConte
 $('wu').onclick=async()=>{try{const data=await fetchJSON('/api/wu');if(!Array.isArray(data)||!data.length)throw new Error('Sem observações');rows=merge(rows,data);save();configure();$('station').value='IALDEI10';render();$('wu-status').textContent='Observação IALDEI10 carregada. Histórico acumula neste navegador; quatro leituras ao longo de três horas são necessárias para previsão.';}catch{$('wu-status').textContent='Estação não carregada. Inicie python3 meteo_server.py com WU_API_KEY configurada de forma segura; no GitHub Pages esta integração não dispõe de backend.';}};
 $('station').addEventListener('change',()=>{const r=rows.filter(r=>r.id===$('station').value).at(-1);if(map&&r)map.panTo([r.lat,r.lon]);});
 if(rows.length)configure();refresh();
+
+function decisions(history,time,predictions){
+ const config={frost:Number($('frost').value),heat:Number($('heat').value),dry:Number($('dry').value),wind:Number($('wind-limit').value),rain:Number($('rain-limit').value),base:Number($('base').value)};
+ const result=assess(history,time,config,predictions);
+ if(result.unavailable){$('agro').textContent=result.reason;$('civil').textContent=result.reason;return;}
+ const list=items=>items.map(text=>`<p class="indicator">${escape(text)}</p>`).join('');
+ $('agro').innerHTML=`<p>Últimas 24 horas da fonte · ${result.temperatureCoverage}/24 amostras horárias de temperatura · ${result.rainCoverage}/24 de chuva.</p><p>Mínima: <strong>${fmt(result.min)} °C</strong> · Máxima: <strong>${fmt(result.max)} °C</strong><br>Chuva 24 h: <strong>${result.rain24===null?'Dados incompletos':fmt(result.rain24)+' mm'}</strong><br>Graus-dia acima de ${config.base} °C: <strong>${result.degreeDays===null?'Dados incompletos':fmt(result.degreeDays)+' °C·dia'}</strong></p>`+list(result.agro)+(result.agro.length?'':'<p>Sem indicadores acionados pelos dados disponíveis e limiares atuais.</p>');
+ $('civil').innerHTML=`<p>Calor + secura + vento: <strong>${escape(result.fire)}</strong>.</p>`+list(result.civil)+(result.civil.length?'':'<p>Sem outros indicadores acionados. Confirmar dados ausentes e avisos oficiais.</p>');
+}
+for(const id of ['frost','heat','dry','wind-limit','rain-limit','base'])$(id).addEventListener('input',()=>{if($(id).checkValidity())render();});

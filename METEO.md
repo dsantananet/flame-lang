@@ -42,7 +42,7 @@ No GitHub Pages não há backend Python: o botão explica essa limitação. A in
 ## Verificar
 
 ```sh
-node --test tests/meteo.test.mjs
+node --test tests/*.test.mjs
 python3 -B -m unittest discover -s tests -p 'test_*.py'
 ```
 
@@ -57,3 +57,24 @@ python3 -B tools/export_ipma.py --refresh --output meteo-data
 ```
 
 Produz CSV separado por vírgula, CSV Excel separado por `;`, GeoJSON e manifesto de recolha. Cache de dez minutos; use `--station ID_IPMA` para filtrar uma estação. Não calcula previsões: estas pertencem à aplicação web. O `manifesto.json` inclui número de registos, estações e intervalo temporal. O script de instalação não deixa servidores em execução.
+
+
+## Chave cifrada localmente (opcional)
+
+Para usar a chave sem a guardar em claro, instale a dependência opcional:
+
+```sh
+bash install_meteo.sh --with-encryption
+.venv-meteo/bin/python tools/wu_credentials.py
+.venv-meteo/bin/python meteo_server.py --encrypted-key .wu-key.enc
+```
+
+A ferramenta pede a chave e uma palavra-passe no terminal, sem mostrar os valores. Usa AES-256-GCM autenticado e derivação scrypt com salt aleatório. O ficheiro tem permissões apenas para o utilizador e é ignorado pelo Git. A palavra-passe é solicitada ao arrancar e não é guardada no script. O servidor mantém a chave decifrada apenas em memória. Não inclua a chave, palavra-passe ou ficheiro cifrado no repositório. Não foi criada nem cifrada uma chave real nesta implementação.
+
+Se perder o ficheiro ou a palavra-passe, crie um novo ficheiro com uma chave válida. Se houver exposição, revogue/rode a chave no fornecedor: apagar o ficheiro não revoga a chave. A ferramenta não substitui ficheiros existentes. Em tarefas cloud não interativas prefira a ligação segura WU_API_KEY já prevista; a cifragem local não pode usar um placeholder de proxy como palavra-passe.
+
+## Caderno agrícola e proteção civil
+
+O painel agroclimático apresenta mínima/máxima do período, frio/calor, secura do ar e vento. Chuva de 24 horas e graus-dia simplificados só são apresentados quando existem 24 amostras horárias válidas na janela; cobertura incompleta nunca é interpretada como zero. A base térmica pode ser ajustada. Para leituras sub-horárias usa a última amostra de cada hora; isto não equivale a uma temperatura média horária oficial. Não calcula evapotranspiração, balanço hídrico, necessidade de rega ou calendário de sementeira sem dados de cultura, solo e fase fenológica.
+
+O painel de proteção civil avalia combinações de calor/secura/vento, vento médio, chuva horária e calor, usando os últimos dados da estação selecionada. Limiares iniciais: 35 °C, 20% de humidade, 30 km/h para combinação de incêndio, 50 km/h para vento elevado, 10 mm/h para chuva. São critérios demonstrativos ajustáveis, não classes de perigo validadas nem FWI. Abaixo dos limiares não implica segurança. Temperatura, humidade ou vento ausentes tornam a combinação de incêndio indeterminada; estação atrasada mais de duas horas suspende a avaliação. Não há envio automático de alertas ou ativação de planos de emergência.

@@ -1,0 +1,4 @@
+# Optional: local password-encrypted Weather Underground credentials.
+cryptography==50.0.0
+cffi==2.1.1
+pycparser==3.0

@@ -10,6 +10,7 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 CACHE = None
+LOCAL_KEY = None
 
 
 def wu_rows(data):
@@ -47,7 +48,7 @@ class Handler(SimpleHTTPRequestHandler):
             return self.respond(403, {'error': 'Private path'})
         if path != '/api/wu':
             return super().do_GET()
-        key = os.environ.get('WU_API_KEY')
+        key = LOCAL_KEY or os.environ.get('WU_API_KEY')
         if not key:
             return self.respond(503, {'error': 'Configure WU_API_KEY in secure environment settings'})
         try:
@@ -75,6 +76,10 @@ class Handler(SimpleHTTPRequestHandler):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--port', type=int, default=8000)
+    parser.add_argument('--encrypted-key', type=Path, help='Ficheiro cifrado; pede palavra-passe no terminal')
     args = parser.parse_args()
+    if args.encrypted_key:
+        from tools.wu_credentials import unlock
+        LOCAL_KEY = unlock(args.encrypted_key)
     print(f'Flame Meteo: porta {args.port}; caminho /web/meteo/')
     ThreadingHTTPServer(('127.0.0.1', args.port), Handler).serve_forever()

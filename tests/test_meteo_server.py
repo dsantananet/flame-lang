@@ -52,4 +52,25 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(rows[0]['humidity'],0)
         self.assertIsNone(rows[0]['rain'])
 
-if __name__ == '__main__': unittest.main()
+
+class EncryptionTests(unittest.TestCase):
+    def test_authenticated_encryption_roundtrip_and_wrong_password(self):
+        from tools.wu_credentials import encrypt, decrypt
+        secret='test-key-not-a-real-credential'
+        content=encrypt(secret,'long-test-passphrase')
+        self.assertNotIn(secret,content)
+        self.assertEqual(decrypt(content,'long-test-passphrase'),secret)
+        with self.assertRaises(Exception): decrypt(content,'wrong-passphrase')
+
+    def test_tampering_is_rejected_and_encryption_randomized(self):
+        import json,base64
+        from tools.wu_credentials import encrypt, decrypt
+        a=encrypt('test-key','long-test-passphrase')
+        b=encrypt('test-key','long-test-passphrase')
+        self.assertNotEqual(a,b)
+        data=json.loads(a)
+        raw=bytearray(base64.b64decode(data['ciphertext']));raw[0]^=1
+        data['ciphertext']=base64.b64encode(raw).decode()
+        with self.assertRaises(Exception):decrypt(json.dumps(data),'long-test-passphrase')
+
+if __name__ == "__main__": unittest.main()

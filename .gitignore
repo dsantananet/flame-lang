@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 meteo-data/
+
+.venv-meteo/
+.wu-key.enc
+*.wu-key.enc
