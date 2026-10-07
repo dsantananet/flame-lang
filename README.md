@@ -102,3 +102,7 @@ https://dsantananet.github.io/flame-lang/
 ---
 
 ## ⭐ Dá uma estrela se achaste útil!
+
+## 🌦️ Flame Meteo — observações e previsão experimental
+
+[Abra o mapa meteorológico](web/meteo/) com estações IPMA, histórico, animação, gráficos, tendência de temperatura/humidade até três horas e exportação CSV/GeoJSON. Consulte [o guia](METEO.md) para executar, interpretar a avaliação e ligar a estação IALDEI10 de forma segura. O modelo é experimental e não substitui previsões oficiais.
