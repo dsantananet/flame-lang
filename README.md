@@ -1,4 +1,4 @@
-<h1>IgnisPyro Meteo</h1>
+<p align="center"><img src="img/IgnisPyro1.jpg" alt="IgnisPyro" width="460"></p>
 
 Observações meteorológicas, previsão experimental e indicadores para agronomia e proteção civil, desenvolvidos com Flame.
 
