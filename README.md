@@ -8,8 +8,7 @@ Não é um simulador de incêndios nem a aplicação IgnisPyro Meteo.
 
 ## Instalação para utilizadores
 
-O instalador candidato Windows x64 está em validação; **ainda não existe uma Release publicada**.
-Quando aprovada, estará em [Releases](https://github.com/dsantananet/flame-lang/releases).
+A versão experimental Windows x64 está publicada em [Releases](https://github.com/dsantananet/flame-lang/releases/tag/v0.2.0-rc.1), com instalador, ZIP portátil, instruções e SHA256.
 Descarregue o ficheiro `FlameLang-…-windows-x64-setup.exe`, execute o assistente e abra FlameLang no menu Iniciar.
 Python, Git e Node.js não são necessários no computador do utilizador.
 Desinstale em Definições → Aplicações → FlameLang. O ZIP de código-fonte não é um instalador.
@@ -27,7 +26,7 @@ Abra o editor e clique em Executar. Use Abrir/Guardar para trabalhar com ficheir
 
 ## Requisitos e estado
 
-Pacote candidato para Windows 10/11 x64; validação de instalação em máquina limpa pendente.
+Pacote candidato para Windows 10/11 x64. Instalação em pasta nova, dois arranques e desinstalação passaram num runner Windows novo.
 Linux e macOS não foram testados e não têm pacotes suportados.
 ![Editor FlameLang em Windows 11](docs/screenshots/editor-windows.png)
 
@@ -59,3 +58,4 @@ Esta identificação não representa uma versão estável publicada.
 
 Licença [MIT](LICENSE), conforme declaração original. Consulte [avisos](LEGAL-NOTICE.md).
 Contacto: [dsantananet](https://github.com/dsantananet); problemas em Issues deste repositório.
+
