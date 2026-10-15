@@ -16,6 +16,8 @@ OutputBaseFilename=FlameLang-0.2.0-rc.1-windows-x64-setup
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
+WizardImageFile=wizard.bmp
+WizardSmallImageFile=wizard-small.bmp
 [Files]
 Source: "..\dist-current\FlameLang\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 [Icons]
