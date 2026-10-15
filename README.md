@@ -1,4 +1,4 @@
-<p align="center"><img src="img/IgnisPyro1.jpg" alt="IgnisPyro" width="460"></p>
+<p align="center"><img src="img/flame-logo.png" alt="FlameLang — Domain-Specific Language for Fire Modeling and Decision Support" width="460"></p>
 
 Observações meteorológicas, previsão experimental e indicadores para agronomia e proteção civil, desenvolvidos com Flame.
 
