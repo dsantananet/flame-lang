@@ -1,114 +1,61 @@
-<p align="center"><img src="img/IgnisPyro1.jpg" alt="IgnisPyro" width="460"></p>
+# FlameLang
 
-Observações meteorológicas, previsão experimental e indicadores para agronomia e proteção civil, desenvolvidos com Flame.
+<p align="center"><img src="img/flame-logo.png" alt="Flame — linguagem de programação para modelação do fogo e apoio à decisão" width="500"></p>
 
-[Aplicação instalável no Windows pelo Edge/Chrome](web/meteo/) · [Instalação, atualizações e utilização](METEO.md)
+FlameLang é uma linguagem experimental com um editor gráfico para trabalhar com variáveis,
+expressões, condições, ciclos, funções e CSV. O editor permite abrir, guardar e executar ficheiros `.flame`.
+Não é um simulador de incêndios nem a aplicação IgnisPyro Meteo.
 
+## Instalação para utilizadores
 
-# 🔥 Flame — A Domain-Specific Language for Fire Modeling and Decision Support
+O instalador candidato Windows x64 está em validação; **ainda não existe uma Release publicada**.
+Quando aprovada, estará em [Releases](https://github.com/dsantananet/flame-lang/releases).
+Descarregue o ficheiro `FlameLang-…-windows-x64-setup.exe`, execute o assistente e abra FlameLang no menu Iniciar.
+Python, Git e Node.js não são necessários no computador do utilizador.
+Desinstale em Definições → Aplicações → FlameLang. O ZIP de código-fonte não é um instalador.
 
-[![Build](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/dsantananet/flame-lang)
-[![License](https://img.shields.io/github/license/dsantananet/flame-lang)](LICENSE)
-[![Language](https://img.shields.io/badge/language-Python-blue.svg)](https://python.org)
-[![Version](https://img.shields.io/badge/version-0.1.0-orange)](https://github.com/dsantananet/flame-lang/releases)
-
----
-
-## 🔍 O que é a Flame?
-
-**Flame** é uma linguagem de programação específica de domínio (*DSL*) leve, expressiva e orientada à análise, simulação e apoio à decisão — especialmente desenvolvida para:
-- **Modelação do comportamento do fogo**;
-- **Risco meteorológico e ambiental**;
-- **Suporte operacional em cenários críticos**.
-
-A linguagem permite combinar lógica, dados meteorológicos, índices (ex: FWI, Haines, NDMI) e regras operacionais de forma simples e estruturada.
-
----
-
-## 🚀 Instalação
-
-```bash
-git clone https://github.com/dsantananet/flame-lang.git
-cd flame-lang
-python interpreter.py script.flame
-```
-
-Requisitos:
-- Python 3.10+
-- (opcional) Bibliotecas: `pandas`, `numpy`, `shapely`, `geopandas`, `fpdf`
-
----
-
-## 🧪 Exemplo de Código
+## Utilização
 
 ```flame
-if NDMI < 0.3 and PIR == "Muito Elevado" then
-    alerta "🔥 Risco extremo de propagação"
-end
-
-if temperatura > 35 and vento > 30 then
-    ativar "Plano de Reforço Operacional"
-end
+let nome = "Mundo"
+let x = 21
+print("Olá", nome)
+print(x * 2)
 ```
 
----
+Abra o editor e clique em Executar. Use Abrir/Guardar para trabalhar com ficheiros.
 
-## 📁 Estrutura do Projeto
+## Requisitos e estado
 
-```bash
-flame-lang/
-├── interpreter.py         # Interpretador principal em Python
-├── examples/              # Scripts Flame prontos a usar
-├── img/                   # Ícones e logótipos
-├── web/                   # Playground web (em desenvolvimento)
-├── README.md
-```
+Pacote candidato para Windows 10/11 x64; validação de instalação em máquina limpa pendente.
+Linux e macOS não foram testados e não têm pacotes suportados.
+![Editor FlameLang em Windows 11](docs/screenshots/editor-windows.png)
 
----
+## Limitações conhecidas
 
-## 🧠 Casos de Utilização
+Estão implementados `let`, `print`, números, texto, listas, operações +, -, *, / e %,
+comparações, `if/elif/else`, `for i in 1..5`, `def/return`, `load_csv`, `get`, `len`,
+`to_number`, `.split` e `normalized_difference`. A indentação define os blocos.
+Os exemplos de FWI apenas leem valores de exemplo e aplicam limiares didáticos: não calculam FWI
+nem fornecem perigo oficial. Os PDFs antigos podem descrever objetivos futuros.
+Os CSV devem estar na pasta do programa ou numa subpasta. O interpretador limita ciclos,
+recursão, volume de dados e saída para evitar bloqueios do editor.
+O interpretador deixou de executar Python arbitrário via eval/exec.
 
-- Apoio à decisão em sistemas de combate a incêndios.
-- Simulação de regras meteorológicas personalizadas.
-- Integração com dashboards operacionais.
-- Ensino e formação em proteção civil e SIG.
+## Para programadores
 
----
+Python 3.12+ com Tk. Execute `python desktop.py` ou `python flame_interpreter.py examples/hello.flame`.
+Testes: `python -m unittest discover -s tests -p test_flame.py`.
+Windows: instale `requirements-build.txt`, execute `python packaging/build.py` e compile
+`packaging/windows.iss` com Inno Setup 6.7.3. O processo inclui Python e Tk no pacote.
 
-## 🌍 Tópicos
+## Novidades do candidato 0.2.0-rc.1
 
-`flame` · `programming-language` · `fire-modeling` · `wildfire` · `decision-support` · `dsl` · `environment` · `ai` · `open-source`
+Editor gráfico, condições, ciclos, funções, CSV, exemplos executáveis, erros com número de linha,
+interpretador restrito e instalação por utilizador.
+Esta identificação não representa uma versão estável publicada.
 
----
+## Licença e contacto
 
-## 📜 Licença
-
-Este projeto é distribuído sob a licença MIT.  
-Consulta o ficheiro [LICENSE](LICENSE) para mais detalhes.
-
----
-
-## 🧭 Desenvolvido por
-
-**Daniel Ricardo Maranhão Santana**  
-Especialista em Geointeligência, SIG, Proteção Civil e Comportamento do Fogo  
-Castelo Branco, Portugal
-##Pagina Oficial
-https://dsantananet.github.io/flame-lang/
----
-
-## 🌐 Futuro
-
-- 🔄 API REST para executar código Flame remotamente  
-- 🧩 Integração com IA (PyTorch / scikit-learn)  
-- 🛰️ Suporte a dados em tempo real (IPMA, SGIFR, FIRMS)  
-- 🌍 Dashboard interativo (Streamlit / web)  
-- 📘 Playground online para testes
-
----
-
-## ⭐ Dá uma estrela se achaste útil!
-
-## 🌦️ Flame Meteo — observações e previsão experimental
-
-[Abra o mapa meteorológico](web/meteo/) com estações IPMA, histórico, animação, gráficos, tendência de temperatura/humidade até três horas e exportação CSV/GeoJSON. Consulte [o guia](METEO.md) para executar, interpretar a avaliação e ligar a estação IALDEI10 de forma segura. O modelo é experimental e não substitui previsões oficiais.
+Licença [MIT](LICENSE), conforme declaração original. Consulte [avisos](LEGAL-NOTICE.md).
+Contacto: [dsantananet](https://github.com/dsantananet); problemas em Issues deste repositório.

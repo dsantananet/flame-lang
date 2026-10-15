@@ -1,0 +1,28 @@
+# 🔍 CSV Fire Risk Analysis
+
+# Simulated CSV line-by-line parsing
+let linhas = [
+    "Concelho,Temp,Humidade,FWI",
+    "Proença-a-Nova,38,18,72",
+    "Castelo Branco,34,22,60",
+    "Sertã,40,15,80"
+]
+
+# Parse header
+let header = linhas[0].split(",")
+
+# Analyze remaining lines
+for i in 1..len(linhas)-1:
+    let partes = linhas[i].split(",")
+    let concelho = partes[0]
+    let temp = to_number(partes[1])
+    let humidade = to_number(partes[2])
+    let fwi = to_number(partes[3])
+
+    # Fire risk logic
+    if temp > 37 and humidade < 20 and fwi > 70:
+        print("🚨", concelho, "→ EXTREME RISK")
+    elif fwi > 60:
+        print("⚠️", concelho, "→ HIGH RISK")
+    else:
+        print("✅", concelho, "→ LOW RISK")

@@ -1,0 +1,37 @@
+FlameLang — 0.2.0-rc.1 — versão experimental
+
+INSTALADOR WINDOWS
+1. Descarregue FlameLang-0.2.0-rc.1-windows-x64-setup.exe.
+2. Execute o instalador e siga o assistente.
+3. Abra FlameLang pelo menu Iniciar.
+Não precisa de instalar Python, Git ou Node.js.
+Desinstalar: Definições do Windows > Aplicações > FlameLang.
+
+VERSÃO PORTÁTIL ZIP
+1. Descarregue FlameLang-0.2.0-rc.1-windows-x64-portable.zip.
+2. Clique com o botão direito > Extrair tudo.
+3. Abra FlameLang.exe dentro da pasta extraída.
+Não retire o executável da pasta; a pasta _internal contém ficheiros necessários.
+O ZIP "Source code" do GitHub é para programadores, não para instalar.
+
+REQUISITOS
+Windows x64. Compilação destinada a Windows 10/11; os resultados de teste constam
+da Release. Não existem ainda pacotes testados para Linux ou macOS.
+Executável sem assinatura digital de editor. Não desative as proteções do Windows.
+Descarregue apenas a partir do repositório oficial dsantananet.
+
+UTILIZAÇÃO
+Clique em Executar para experimentar o programa inicial.
+Em Abrir, escolha um exemplo .flame; os exemplos vêm incluídos na aplicação.
+Use Guardar para criar os seus próprios programas. Os CSV devem estar na mesma
+pasta do programa ou numa subpasta. Use indentação de quatro espaços nos blocos.
+Exemplo:
+let total = 0
+for i in 1..5:
+    let total = total + i
+print(total)
+Resultado: 15. Consulte docs/LANGUAGE.md no repositório para a sintaxe.
+Os valores de FWI dos exemplos são didáticos, não constituem perigo oficial.
+
+CONTACTO
+https://github.com/dsantananet/flame-lang/issues
